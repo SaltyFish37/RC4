@@ -1,0 +1,37 @@
+# Project: RC4
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = ioput.o main.o rc4.o speed.o
+LINKOBJ  = ioput.o main.o rc4.o speed.o
+LIBS     = -L"D:/DEV C++/Dev-Cpp/MinGW64/lib" -L"D:/DEV C++/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc -g3 -gstabs
+INCS     = -I"D:/DEV C++/Dev-Cpp/MinGW64/include" -I"D:/DEV C++/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/DEV C++/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
+CXXINCS  = -I"D:/DEV C++/Dev-Cpp/MinGW64/include" -I"D:/DEV C++/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/DEV C++/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"D:/DEV C++/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
+BIN      = RC4.exe
+CXXFLAGS = $(CXXINCS) 
+CFLAGS   = $(INCS) 
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CC) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+ioput.o: ioput.c
+	$(CC) -c ioput.c -o ioput.o $(CFLAGS)
+
+main.o: main.c
+	$(CC) -c main.c -o main.o $(CFLAGS)
+
+rc4.o: rc4.c
+	$(CC) -c rc4.c -o rc4.o $(CFLAGS)
+
+speed.o: speed.c
+	$(CC) -c speed.c -o speed.o $(CFLAGS)
